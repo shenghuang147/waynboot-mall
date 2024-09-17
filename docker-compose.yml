@@ -10,8 +10,6 @@ services:
       - ./jars/waynboot-mobile-api.jar:/home/app/waynboot-mobile-api.jar
     restart: always
     command: java -Xms512m -Xmx512m -Duser.timezone=GMT+8 -Dfile.encoding=utf-8 -jar /home/app/waynboot-mobile-api.jar
-    ports:
-      - "82:82"
     environment:
       - TZ=Asia/Shanghai
       - LOG_PATH_PREFIX=/home/logs
@@ -27,8 +25,6 @@ services:
       - ./jars/waynboot-admin-api.jar:/home/app/waynboot-admin-api.jar
     restart: always
     command: java -Xms512m -Xmx512m -Duser.timezone=GMT+8 -Dfile.encoding=utf-8 -jar /home/app/waynboot-admin-api.jar
-    ports:
-      - "81:81"
     environment:
       - TZ=Asia/Shanghai
       - LOG_PATH_PREFIX=/home/logs
@@ -44,8 +40,6 @@ services:
       - ./jars/waynboot-message-consumer.jar:/home/app/waynboot-message-consumer.jar
     restart: always
     command: java -Xms512m -Xmx512m -Duser.timezone=GMT+8 -Dfile.encoding=utf-8 -jar /home/app/waynboot-message-consumer.jar
-    ports:
-      - "85:85"
     environment:
       - TZ=Asia/Shanghai
       - LOG_PATH_PREFIX=/home/logs
@@ -59,8 +53,6 @@ services:
       - ./jars/waynboot-monitor.jar:/home/app/waynboot-monitor.jar
     restart: always
     command: java -Xms512m -Xmx512m -Duser.timezone=GMT+8 -Dfile.encoding=utf-8 -jar /home/app/waynboot-monitor.jar
-    ports:
-      - "89:89"
     environment:
       - TZ=Asia/Shanghai
     network_mode: "host"
@@ -68,9 +60,6 @@ services:
     container_name: "nginx"
     image: nginx:latest
     restart: always
-    ports:
-      - "80:80"
-      - "443:443"
     environment:
       - TZ=Asia/Shanghai
     volumes:
